@@ -1,0 +1,15 @@
+{
+    "name": "MongoAdminUI", 
+    "version": "0.0.1", 
+    "private": true, 
+    "dependencies": {
+      	"express": "3.x.x",
+      	"jade": ">= 0.0.1",
+      	"mongodb": "*",
+      	"consolidate": "*",
+      	"swig": "*",
+      	"underscore": "1.5.2",
+      	"async": "*",
+		"connect-mongo": "*"
+  	}
+}

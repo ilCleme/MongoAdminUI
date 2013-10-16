@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <title>MongoAdminUI</title>
+  <link href="/public/stylesheets/style.css" rel="stylesheet" media="all"/>
+  <link href="/public/stylesheets/bootstrap.css" rel="stylesheet" media="all"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% block head %}{% endblock %}
+</head>
+<body>
+	<header>
+		<div>
+			<h1 class="titolo"><a class="nodecoration" href="/db">MongoAdminUI</a></h1>
+			<p class="sottotitolo">Web Administration Interface for MongoDB</p>
+		</div>
+		<form id="ricerca">
+			<input type="text" id="search" placeholder="Ricerca">
+			<select id="tiporicerca" onfocus="this.blur()">
+			  <option value="database">database</option>
+			  <option value="collezione">collezione</option>
+			  <option value="documento">documento</option>
+			</select>
+			<button type="submit" class="search"></button>
+		</form>
+	</header>
+	<div id="content">
+	<div id="database">
+		<div class="database">
+		<p class="dbtitle">Database Recuperati</p>
+		<ul class="database">
+			{% for db in database %}
+			<li class="database">
+				<a href="/db/{{db}}">
+					<strong>{{ db|upper }}</strong>
+				</a>
+				<form id="deletedb" action="/db" method="POST">
+					<input type="hidden" name="_method" value="delete">
+					<input type="hidden" name="dbdel" value="{{db}}">
+					<button type="submit" alt="Elimina Database"></button>
+				</form>
+			</li>
+			{% endfor %}
+		</ul>
+		</div>
+		<div class="newdb">
+		<form id="newdb" action="/db" autocomplete="off" method="post">
+		    <script type="text/javascript" src="/public/javascripts/jquery.min.js"></script>
+		    <script type="text/javascript" src="/public/javascripts/jquery.validate.js"></script>
+		    <script type="text/javascript" src="/public/javascripts/validate.js"></script>
+			
+				<p class="formtitle">Crea Nuovo Database</p>
+			 	<input class="newcoll" type="text" name="newDb" placeholder="Nome Database">
+			  	<button type="submit">crea</button>
+				{% if error %}
+				<p class="error">{{error}}</p>
+				{% endif %}
+		  	
+		</form>
+		</div>
+	</div>
+	{% block error %} {% endblock %}
+	{% block server %} {% endblock %}
+	{% block collezione %}{% endblock %}
+ 	{% block documento %} {% endblock %}
+ 	</div>
+ 	<footer>
+ 		<div class="contentinfo info">
+			<ul class="info">
+				<li class="title info">Informazioni Personali</li>
+ 				<li class="uni info"><p class="uni">Clementi Mattia<br>Università degli Studi di Udine<br>Tecnologie Web e Multimediali</p></li>
+			</ul>
+		</div>
+		<div class="contentinfo social">
+			<ul class="social info">	
+				<li class="title info">Social</li>
+				<li class="fb info">
+					<p class="infosocial"><a class="infosocial" href="https://www.facebook.com/mattia.clementi">Facebook</a></p>
+				</li>
+				<li class="twitter info">
+					<p class="infosocial"><a class="infosocial" href="https://twitter.com/MattiaClementi">Twitter</a></p>
+				</li>
+			</ul>
+		</div>
+ 	</footer>
+ </body>
+</html>

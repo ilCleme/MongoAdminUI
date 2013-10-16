@@ -1,0 +1,590 @@
+@font-face {
+  font-family: Bariol;
+  src: url("Bariol_Regular.otf");
+}
+
+*{
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+
+body {
+	font: 18px/24px Bariol, Times, serif;
+	font-family: Bariol, sans-serif;
+  	padding: 0px;
+  	margin:  0 auto;
+  	/*font: 14px "Helvetica Neue",Helvetica, Arial, sans-serif;*/
+}
+
+li{
+	list-style-type: none;
+}
+
+#error{
+	border-left:1px solid black;
+	float: left;
+	margin-left: 5px;
+	width: 75%; 
+	text-align:center;
+}
+
+.error{
+	margin-top:3px;
+	margin: 0 25%;
+	margin-bottom: 20px;
+	color: red;
+	text-transform: uppercase;
+	font-size: large;
+	text-align:center;
+	border: 1px solid red;
+	border-radius: 10px;
+	width: auto;
+	float:left;
+	padding: 3px;
+	background-color: pink;
+	
+}
+.error div{
+	background-color: #FF6088;
+}
+
+/* Stile per header*/
+
+header{
+	height: 120px;
+	background-color: #e1523d;
+	margin-bottom:10px;
+}
+
+header > div {
+	float:left;
+	margin-top:30px;
+	margin-left:15px;
+}
+
+.sottotitolo{
+	text-align:center;
+	color: white;
+	font-size: 12pt;
+	font-weight:lighter;
+	margin-top:5px;
+	letter-spacing:1px;
+}
+
+a[class=nodecoration]{
+	color: white;
+	font-size:40pt;
+	text-align:center;
+	text-decoration: none;
+}
+
+a[class=nodecoration]:hover{
+	color:white;
+	font-color:white;
+	text-decoration:none;
+}
+
+#ricerca{
+	float:right;
+	margin-right:40px;
+	margin-top:40px;
+}
+
+#search{
+	margin-left:0;
+	height:40px;
+	width:200px;
+	padding:0px;
+	padding-left:4px;
+	float:right;
+	border-color:transparent;
+	font-size:16px;
+	font-weight:lighter;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius:10px;
+	
+	border-top-left-radius:0;
+	border-bottom-left-radius:0;
+}
+
+#search:focus{
+	outline:0;
+}
+
+#ricerca > button{
+	float:left;
+	margin-right:3px;
+	
+	background-color:transparent;
+	background-image:url('/public/images/search1.png');
+	
+	background-repeat:no-repeat;
+	background-position:center;
+	
+	height:40px;
+	width:40px;
+	
+	border-color:transparent;
+}
+
+#tiporicerca{
+	-webkit-appearance: none;
+	appearance: none;
+	
+	border-color:transparent;
+	background-color:#C2C2C2;
+	
+	border-top-right-radius:0;
+	border-bottom-right-radius:0;
+	
+	border-top-left-radius:10px;
+	border-bottom-left-radius:10px;
+	
+	text-transform:uppercase;
+	float:right;
+	width:95px;
+	height:40px;
+	margin:0;
+	padding-left:5px;
+	
+	cursor:pointer;
+}
+
+/* Stile per il contenuto della pagina */
+
+#content{
+	width:100%;
+	float:left;
+	min-height: 500px;
+}
+
+#database{
+	margin: 0 auto;
+	width: 23%;
+	float:left;
+	margin-right:10px;
+}
+
+#database p{
+	margin-bottom:4px;
+}
+
+div[class=database]{
+	float:left;
+	width:100%;
+	margin:0 auto;
+	margin-left:10px;
+}
+
+ul[class=database] {
+	padding-top:5px;
+	margin:0 auto;
+	float:left;
+	width:80%;
+	margin-bottom:10px;
+	text-align:center;
+	margin-left: 15px;
+	padding-left:50px;
+}
+
+li[class=database]{
+	width:100%;
+	text-align: left;
+	/*list-style-type:circle;*/
+	list-style-image:url('/public/images/dbicon1.gif'); 
+	padding-left:10px;
+	list-style-position: inside;
+}
+
+li[class=database] > a{
+	vertical-align: 3px;
+}
+
+.dbtitle{
+	margin: 0 auto;
+	text-align: center;
+	font-size: 20px;
+	text-transform:uppercase;
+	padding: 0;
+}
+
+/* Stile per elementi FORM cancellazione database */
+
+#deletedb {
+	float:right;
+	margin:0;
+}
+
+#deletedb > button {
+	
+	background-image:url('/public/images/remove1.gif');
+	background-repeat:no-repeat;
+	background-position:center;
+	background-color:transparent;
+	border-color:transparent;
+	
+	cursor:pointer;
+	
+	padding-left:0px;
+	margin-left:0px;
+	
+	height:22px;
+	width:22px;
+	
+}
+
+/* Stile per elementi FORM di creazione database */
+#newdb {
+	margin-left:8px;
+	padding-top:3px;
+}
+
+div[class=newdb]{
+	margin-left:10px;
+	padding-top:10px;
+	border-top:1px solid #dddddd;
+	float:left;
+	width:100%;
+}
+
+#newdb > button{
+	height:50px;
+	width: 80px;
+	padding: 0px;
+	font-size:22px;
+	font-weight:lighter;
+	float:left;
+	color: white;
+	background: #4D9C35;
+	text-transform: uppercase;
+	
+	border: 1px solid #4D9C35;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius:10px;
+	
+}
+
+.formtitle {
+	padding-top:3px;
+	margin-top:0px;
+	text-transform:uppercase;
+	text-align: center;
+	padding:0;
+	font-size:14pt;
+}
+
+
+/* Stile per tabella informazioni Server MongoDB */
+
+#dbStat {
+	display:none;
+	/*width: 69%;*/
+}
+
+#dbStat table{
+	margin: 0 auto;
+	/*width:70%;*/
+}
+
+#serverstat{
+	width:75%;
+	margin: 0 auto;
+	border-left: 1px solid black;
+	padding-top: 0px;
+	float:right;
+}
+
+#serverstat table{
+	width: 90%;
+	margin: 0 auto;
+}
+
+
+table { 
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #dddddd;
+	border-top: none;
+	border-radius: 2px;
+}
+
+td{
+	border-right:1px solid #dddddd;
+}
+
+tr{
+	border-top:1px solid #dddddd;
+}
+
+.odd{
+	background-color: #f9f9f9;
+}
+
+caption {
+	line-height: 44px;
+	color: #60634E;
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+tr {
+	vertical-align: top;
+}
+
+tr,th,td {
+	padding: .75em;
+}
+
+#collection{
+	border-left: 1px solid black;
+	float:left;
+	margin: 0 auto;
+	margin-left: 5px;
+	width: 75%;
+	min-height: inherit;
+}
+
+p[class="title"]{
+	text-align:center;
+	text-transform:uppercase;
+	color:black;
+	font-weight:lighter;
+	font-size:20pt;
+	
+	letter-spacing:0.5px;
+}
+
+.collform{
+	margin: 0 auto;
+	width: 100%;
+	float:left;
+	margin-left:10px;
+	border-bottom: 1px solid #dddddd;
+	margin-bottom: 20px;
+}
+
+#collform {
+	/*border: 1px solid red;*/
+	float:left;
+	min-height: 50px;
+	width: 100%;
+	padding: 10px;
+}
+
+#collform > a {
+	padding: 5px;
+	margin-bottom: 5px;
+	float: left;
+	font-size: 20px;
+}
+
+
+#docform {
+	float:left;
+	min-height: 50px;
+	width: auto;
+	padding: 10px;
+	margin-right: 3px;
+	min-width:300px;
+	
+	border: 1px solid #005682;
+	border-radius:10px;
+	
+	background-color: #0073AF;
+	color: #F5AC48;
+}
+
+#docform > a {
+	padding: 5px;
+	margin-bottom: 5px;
+	float: left;
+	font-size: 20px;
+}
+
+
+
+
+/*Stile per elementi FORM di creazione collezioni */
+#newcoll > div{
+	/*border:1px solid #dddddd;*/
+	float:left;
+	width: auto;
+	/*background: #f9f9f9;*/
+	
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius:3px;
+	
+	padding: 0;
+}
+
+.newcoll{
+	background: #F4F5F2;
+	color: black;
+	border: 1px solid #dddddd;
+	width: 200px;
+	height: 50px;
+	font-size:16px;
+	font-weight:lighter;
+	padding-left:5px;
+	float:left;
+	margin-left: 3px;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	
+	line-height: 40px;
+}
+
+.newcoll:focus {
+	outline: none;
+}
+
+#newcoll > div > button{
+	height:50px;
+	width: 90px;
+	padding: 0px;
+	font-size:22px;
+	font-weight:lighter;
+	float:left;
+	color: white;
+	background: #4D9C35;
+	text-transform: uppercase;
+	
+	margin-left:3px;
+	
+	border: 1px solid #4D9C35;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius:10px;
+	
+	/*box-shadow: -1px -1px 1px #AFCFAA*/
+}
+
+#newcoll > div > p {
+	text-align: center;
+	font-size:22px;
+	font-weight: bold;
+	margin: 0;
+	padding-bottom: 3px;
+}
+
+/* Stile per elementi FORM cancellazione collezione */
+
+#deletecoll{
+	float: left;
+}
+
+#deletecoll > div{
+	width:100%;
+	border: 1px solid red;
+}
+
+#deletecoll > button{
+
+	height:25px;
+	width: 55px;
+	padding: 0;
+	color: white;
+	font-size:10px;
+	text-transform: uppercase;
+	background-color: red;
+	border: 1px solid red;
+	
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px; 
+}
+
+
+.viewdoc {
+	color:yellow;
+	background-color:blue;
+}
+
+
+/*Stile per elemento FOOTER del layout*/
+
+footer{
+	margin-top:10px;
+	background-color: #e1523d;
+	width:100%;
+	float:left;
+	font-size:100%;
+}
+
+div[class~=contentinfo]{
+	padding-top:25px;
+	float:left;
+	width:50%;
+	text-align:center;
+}
+
+ul[class~=info]{
+	width:90%;
+	float:left;
+}
+
+li[class~=info]{
+	color:white;
+	font-size:20px;
+}
+
+li[class~=title]{
+	font-size:35px;
+	text-transform:uppercase;
+	margin-bottom:10px;
+}
+
+li[class~=info]:first-child{
+	margin-bottom:30px;
+}
+
+li[class~=fb]{
+	margin-left:130px;
+	margin-right:20px;
+	list-style-image:url('/public/images/facebook.png');
+	list-style-position:inside;
+}
+
+li[class~=twitter]{
+	margin-left:130px;
+	margin-right:20px;
+	list-style-image:url('/public/images/twitter.png');
+	list-style-position:inside;
+}
+
+li[class~=uni]{
+	list-style-image:url('/public/images/pollo-min.gif');
+	list-style-position:inside;
+}
+
+p[class="infosocial"]{
+	float:right;
+	font-size:18px;
+	margin-left:0px;
+	margin-right:200px;
+	margin-top:14px;
+}
+
+a[class="infosocial"], a[class="infosocial"]:hover{
+	color:white;
+	text-decoration:none;
+}
+
+p[class=uni]{
+	font-size:16px;
+	float:right;
+	margin-right:90px;
+	margin-top:14px;
+}
+

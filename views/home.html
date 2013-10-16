@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <base href="{{ baseHref }}">
+  <meta charset="utf-8">
+  <title>MongoAdminUI</title>
+  <link href="/public/stylesheets/normalize.css" rel="stylesheet" media="all"/>
+  <link href="/public/stylesheets/home.css" rel="stylesheet" media="all"/>
+  <link href="/public/stylesheets/bootstrap.css" rel="stylesheet" media="all"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="/public/javascripts/jquery.min.js"></script>
+  <script type="text/javascript" src="/public/javascripts/jquery.validate.js"></script>
+  <script type="text/javascript" src="/public/javascripts/valida.js"></script>
+</head>
+<body>
+	<header>
+		<div class="titolo">
+			<p class="titolo">MongoAdminUI</p>
+		</div>
+		<div class="sottotitolo">
+			<p class="sottotitolo">Web Administration Interface for MongoDB</p>
+		</div>
+	</header>
+	{% block error %}
+		{% if err%}
+		<div class="error">
+			<p class="error">{{err}}</p>
+		</div>
+		{% endif %}
+	{% endblock %}
+	<div id="content">
+			<p class="sottotitolo black">Connect to database MongoDB</p>
+			<form id="connetti" action="/" method="post">
+			    <div class="connessione">
+					<label for="host" class="connessione">HOST</label>
+					<input class="connessione" type="text" name="numhost" placeholder="Host address...">
+				</div>
+				<div class="connessione">
+					<label for="port" class="connessione">PORT</label>
+					<input class="connessione" type="text" name="numport" placeholder="Port Number...">
+				</div>
+				<div class="connessione">
+					<button class="connessione submit" type="submit">Connect</button>
+				</div>
+			</form>
+	</div>
+ 	<footer>
+ 		<div class="contentinfo info">
+			<ul class="info">
+				<li class="title info">Informazioni Personali</li>
+ 				<li class="uni info">
+					<p class="uni">Clementi Mattia<br>Università degli Studi di Udine<br>Tecnologie Web e Multimediali</p>
+				</li>
+			</ul>
+		</div>
+		<div class="contentinfo social">
+			<ul class="social info">	
+				<li class="title info">Social</li>
+				<li class="fb info">
+					<p class="infosocial"><a class="infosocial" href="https://www.facebook.com/mattia.clementi">Facebook</a></p>
+				</li>
+				<li class="twitter info">
+					<p class="infosocial"><a class="infosocial" href="https://twitter.com/MattiaClementi">Twitter</a></p>
+				</li>
+			</ul>
+		</div>
+ 	</footer>
+ </body>
+</html>

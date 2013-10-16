@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block error %}
+	{% if err %}
+		<div id="error" >
+			<p class="error">{{err}}</p>
+		</div>
+	{% endif %}
+{% endblock %}
+
+
+{% block documento %}
+	{% if docs and not err %}
+	<div id="collection">
+		<p class="title">Elenco documenti nella collezione {{title}}</p>
+		<ul class="collform">
+			{% for dati in docs %}
+				<li>
+					<div id="docform"> 
+						<p>
+							{% for i in dati %}
+								{{ loop.key }} : {{i}} <br>
+							{% endfor %}
+						</p>
+						<form id="deletecoll" action="/db/{{db}}/{{coll}}" method="post">
+							<input type="hidden" name="_method" value="delete">
+							<input type="hidden" name="docId" value="{{dati._id}}">
+							<button type="submit" value="Cancella">cancella</button>
+						</form>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+		<div>
+			<form id="newcoll" action="/db/{{db}}/{{coll}}/new" autocomplete="off" method="post">
+				<div>
+					<p>Crea Documento</p>
+				 	<input required="required" class="newcoll" type="text" name="docName" placeholder="Nome Documento">
+				  	<button type="submit">crea</button>
+				</div>
+			</form>
+		</div>
+		
+	</div>
+	{% endif %}
+	{% if docs and err %}
+		<div id="collection">
+			<div>
+				<form id="newcoll" action="/db/{{db}}/{{coll}}/new" autocomplete="off" method="post">
+					<div>
+						<p>Crea Documento</p>
+					 	<input required="required" class="newcoll" type="text" name="docName" placeholder="Nome Documento">
+					  	<button type="submit">crea</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

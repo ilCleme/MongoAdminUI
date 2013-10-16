@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block collezione %}
+	{% if colls %}
+	<div id="collection">
+		<p class="title">Collezioni nel Database {{db}}</p>
+		<ul class="collform">
+			{% for coll in colls %}
+				<li>
+					<div id="collform">
+						<a href="/db/{{db}}/{{coll}}">
+							<strong>{{ coll|upper }} </strong>
+						</a>
+						<form id="deletecoll" action="/db/{{db}}" method="post">
+							<input type="hidden" name="_method" value="delete">
+							<input type="hidden" name="collName" value="{{coll}}">
+							<button type="submit" value="Cancella">cancella</button>
+						</form>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+		<form id="newcoll" action="/db/{{db}}" autocomplete="off" method="post" name="form" >
+			<div>
+				<p>Crea Collezione</p>
+			 	<input required="required" class="newcoll" type="text" name="collName" placeholder="Nome Collezione">
+			  	<button type="submit">crea</button>
+		  	</div>
+		</form>
+	</div>
+	{% endif %}
+	{% if not colls %}
+		<div id="collection">
+			<form id="newcoll" action="/db/{{db}}" autocomplete="off" method="post">
+				<div>
+					<p>Crea Collezione</p>
+				 	<input required="required" class="newcoll" type="text" name="collName" placeholder="Nome Collezione">
+				  	<button type="submit">crea</button>
+			  	</div>
+			</form>
+		</div>
+	{% endif %}
+{% endblock%}
+
+{% block error %}
+	{% if err %}
+		<div id="error">
+			<p class="error">{{err}}</p>
+		</div>
+	{% endif %}
+{% endblock %}
