@@ -11,47 +11,40 @@
 
 {% block documento %}
 	{% if docs and not err %}
-	<div id="collection">
-		<p class="title">Elenco documenti nella collezione {{title}}</p>
-		<ul class="collform">
+	<div id="document">
+		<p class="title">Documenti nella collezione {{title}}</p>
 			{% for dati in docs %}
-				<li>
-					<div id="docform"> 
-						<p>
+					<div class="document"> 
+						<div class="docform">
 							{% for i in dati %}
 								{{ loop.key }} : {{i}} <br>
 							{% endfor %}
-						</p>
-						<form id="deletecoll" action="/db/{{db}}/{{coll}}" method="post">
+						</div>
+						<form id="deletedoc" action="/db/{{db}}/{{collect}}" method="post">
 							<input type="hidden" name="_method" value="delete">
 							<input type="hidden" name="docId" value="{{dati._id}}">
-							<button type="submit" value="Cancella">cancella</button>
+							<button type="submit" class="deletedoc" value="Cancella">cancella</button>
 						</form>
 					</div>
-				</li>
 			{% endfor %}
-		</ul>
-		<div>
-			<form id="newcoll" action="/db/{{db}}/{{coll}}/new" autocomplete="off" method="post">
-				<div>
-					<p>Crea Documento</p>
-				 	<input required="required" class="newcoll" type="text" name="docName" placeholder="Nome Documento">
-				  	<button type="submit">crea</button>
-				</div>
+		<div class="newdoc" >
+			<form id="newdoc" action="/db/{{db}}/{{collect}}/new" autocomplete="off" method="post">
+				<p class="newdoc">Crea Documento</p>
+				<input required="required" class="newdoc" type="text" name="docName" placeholder="Nome Documento">
+				<button class="newcoll" type="submit">crea</button>
 			</form>
 		</div>
 		
 	</div>
 	{% endif %}
+	
 	{% if docs and err %}
-		<div id="collection">
-			<div>
-				<form id="newcoll" action="/db/{{db}}/{{coll}}/new" autocomplete="off" method="post">
-					<div>
-						<p>Crea Documento</p>
-					 	<input required="required" class="newcoll" type="text" name="docName" placeholder="Nome Documento">
-					  	<button type="submit">crea</button>
-					</div>
+		<div id="document">
+			<div class="newdoc">
+				<form id="newdoc" action="/db/{{db}}/{{coll}}/new" autocomplete="off" method="post">
+					<p class="newdoc">Crea Documento</p>
+					<input required="required" class="newdoc" type="text" name="docName" placeholder="Nome Documento">
+					<button class="newdoc" type="submit">crea</button>
 				</form>
 			</div>
 		</div>

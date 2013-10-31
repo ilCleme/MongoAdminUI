@@ -1,34 +1,56 @@
 {% extends 'layout.html' %}
-
 {% block collezione %}
+
 	{% if colls %}
 	<div id="collection">
 		<p class="title">Collezioni nel Database {{db}}</p>
-		<ul class="collform">
-			{% for coll in colls %}
-				<li>
-					<div id="collform">
-						<a href="/db/{{db}}/{{coll}}">
-							<strong>{{ coll|upper }} </strong>
-						</a>
-						<form id="deletecoll" action="/db/{{db}}" method="post">
-							<input type="hidden" name="_method" value="delete">
-							<input type="hidden" name="collName" value="{{coll}}">
-							<button type="submit" value="Cancella">cancella</button>
-						</form>
-					</div>
-				</li>
-			{% endfor %}
-		</ul>
-		<form id="newcoll" action="/db/{{db}}" autocomplete="off" method="post" name="form" >
-			<div>
-				<p>Crea Collezione</p>
+		{% for info in statistiche %}
+		<div id="collform">
+			<div class="nomecollection">
+				<a class="nomecollection" href="/db/{{db}}/{{colls[loop.key]}}">
+					<p class="nomecollection">{{ colls[loop.key]|upper }}</p>
+				</a>
+			</div>
+			<div class="infocollection">
+				<table class="infocollection">
+					<tr>
+					 <td class="odd"><strong>Namespace</strong></td>
+					 <td id="dbHost">{{ info.ns }}</td>
+					 <td class="odd"><strong>Number of Document</strong></td>
+					 <td id="dbVersion">{{ info.count }}</td>
+					</tr>
+					<tr>
+					 <td class="odd"><strong>Size of Collection</strong></td>
+					 <td>{{ info.size }} bytes</td>
+					 <td class="odd"><strong>Average Size of Document</strong></td>
+					 <td>{{ info.avgObjSize }} bytes</td>
+					</tr>
+					<tr>
+					 <td class="odd"><strong>Allocated Space for Collection</strong></td>
+					 <td>{{ info.storageSize }} bytes</td>
+					 <td class="odd"><strong>Capped</strong></td>
+					 <td>{{ info.isCapped }}</td>	   
+					</tr>
+				</table>
+				<!-- Bottone cancellazione collezione -->		
+				<form id="deletecoll" action="/db/{{db}}" method="post">
+					<input type="hidden" name="_method" value="delete">
+					<input type="hidden" name="collName" value="{{colls[loop.key]}}">
+					<button class="deletecoll" type="submit" value="Cancella">cancella</button>
+				</form>
+			</div>
+		</div>
+		{% endfor %}
+		<div class="newcoll">
+			<form id="newcoll" action="/db/{{db}}" autocomplete="off" method="post">
+				<p class="newcoll">Crea Collezione</p>
 			 	<input required="required" class="newcoll" type="text" name="collName" placeholder="Nome Collezione">
-			  	<button type="submit">crea</button>
-		  	</div>
-		</form>
+			  	<button class="newcoll" type="submit">crea</button>
+			</form>
+		</div>
 	</div>
 	{% endif %}
+	
 	{% if not colls %}
 		<div id="collection">
 			<form id="newcoll" action="/db/{{db}}" autocomplete="off" method="post">
@@ -39,7 +61,9 @@
 			  	</div>
 			</form>
 		</div>
+	
 	{% endif %}
+	
 {% endblock%}
 
 {% block error %}

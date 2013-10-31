@@ -18,6 +18,7 @@ module.exports = function(app) {
 		var collection = [];
 		var data = {};
 		
+		
 		connessioni[dbName].collection(collName, function(err, coll) {
     		if (err) {
       			console.log('C\'è stato un errore: '+err);
@@ -46,16 +47,17 @@ module.exports = function(app) {
       			}
 
       			data = {
+					collect: collName,
 					title: req.params.collection,
       				database: databases,
       				db: dbName,
-      				coll: collName,
         			documents: items, //Docs converted to strings
         			docs: docs, //Original docs
         			stats: stats,
         			err: noDocs
         			//id : id
         		};
+
       			res.render('collection', data);
       		
     		});
@@ -82,16 +84,25 @@ module.exports = function(app) {
 		
 		doc._id = oid;
 		
+		/*db.collection(collName, function(err, col){
+			col.stat(function(err, stat){
+				console.log(stat);
+			});
+		});*/
+		
 		db.collection(collName).insert(doc, function(err, result) {
   			if(err){
   				console.error(err);
   				noInsert = "Impossibile inserire il documento \"" + docName +"\"" ;
   				var data = {err : noInsert};
   				res.render('collection', data);
+  			} else {
+				var URL = '/db/'+dbName+'/'+collName;
+  				res.redirect(URL);
   			}
   		});
   		
-  		db.collection(collName).find().toArray(function(err,items){
+  		/*db.collection(collName).find().toArray(function(err,items){
   			db.collection(collName).stats(function(err, stats) {
 
       			var docs = [];
@@ -106,7 +117,7 @@ module.exports = function(app) {
       			res.redirect(URL);
       		
     		});
-  		});
+  		});*/
 		
 	});
 	

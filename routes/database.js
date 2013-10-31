@@ -56,7 +56,7 @@ module.exports = function(app) {
 		db.createCollection("test", function(err,collection){
 			db.dropCollection("test", function(err, coll){
 				if(err){
-					console.log(err)
+					console.log("Errore cancellazione"+ err);
 				} else {
 					console.log("Creato Database "+nomeDb);
 					res.redirect('db');

@@ -22,10 +22,11 @@ li{
 }
 
 #error{
-	border-left:1px solid black;
+	border-left:1px solid white;
 	float: left;
-	margin-left: 5px;
-	width: 75%; 
+	margin:0 auto;
+	padding-top:5px;
+	width: 60%; 
 	text-align:center;
 }
 
@@ -53,8 +54,8 @@ li{
 
 header{
 	height: 120px;
-	background-color: #e1523d;
-	margin-bottom:10px;
+	background-color: #00BFFF;
+	margin-bottom:1px;
 }
 
 header > div {
@@ -98,7 +99,8 @@ a[class=nodecoration]:hover{
 	padding:0px;
 	padding-left:4px;
 	float:right;
-	border-color:transparent;
+	background-color:white;
+	border-color:white;
 	font-size:16px;
 	font-weight:lighter;
 	
@@ -135,7 +137,8 @@ a[class=nodecoration]:hover{
 	appearance: none;
 	
 	border-color:transparent;
-	background-color:#C2C2C2;
+	background-color:#D3D3D3;
+	
 	
 	border-top-right-radius:0;
 	border-bottom-right-radius:0;
@@ -144,71 +147,74 @@ a[class=nodecoration]:hover{
 	border-bottom-left-radius:10px;
 	
 	text-transform:uppercase;
+	letter-spacing:0.5px;
 	float:right;
 	width:95px;
 	height:40px;
 	margin:0;
+	padding-right:2px;
 	padding-left:5px;
 	
 	cursor:pointer;
 }
 
 /* Stile per il contenuto della pagina */
-
 #content{
 	width:100%;
 	float:left;
-	min-height: 500px;
+	background-color:#87CEFA;
 }
 
 #database{
+	padding-top:10px;
 	margin: 0 auto;
-	width: 23%;
+	width: 30%;
 	float:left;
-	margin-right:10px;
-}
-
-#database p{
-	margin-bottom:4px;
 }
 
 div[class=database]{
 	float:left;
 	width:100%;
 	margin:0 auto;
-	margin-left:10px;
+	/*margin-left:10px;*/
+	min-height:300px;
 }
 
 ul[class=database] {
 	padding-top:5px;
-	margin:0 auto;
 	float:left;
-	width:80%;
+	width:60%;
 	margin-bottom:10px;
 	text-align:center;
-	margin-left: 15px;
-	padding-left:50px;
+	margin-left: 20%;
 }
 
 li[class=database]{
 	width:100%;
 	text-align: left;
 	/*list-style-type:circle;*/
+	font-size:14pt;
 	list-style-image:url('/public/images/dbicon1.gif'); 
-	padding-left:10px;
+	/*padding-left:10px;*/
+	padding-top:5px;
 	list-style-position: inside;
 }
 
 li[class=database] > a{
 	vertical-align: 3px;
+	color:black;
+	/*#F9EC87*/
 }
 
-.dbtitle{
+p[class=dbtitle]{
 	margin: 0 auto;
+	color:black;
 	text-align: center;
-	font-size: 20px;
-	text-transform:uppercase;
-	padding: 0;
+	font-size: 20pt;
+	font-weight:lighter;
+	letter-spacing:0.5px;
+	padding: 5px;
+	padding-bottom:10px;
 }
 
 /* Stile per elementi FORM cancellazione database */
@@ -237,17 +243,17 @@ li[class=database] > a{
 }
 
 /* Stile per elementi FORM di creazione database */
-#newdb {
-	margin-left:8px;
-	padding-top:3px;
-}
-
 div[class=newdb]{
-	margin-left:10px;
+	width:100%;
 	padding-top:10px;
-	border-top:1px solid #dddddd;
+	border-top:1px solid white;
 	float:left;
 	width:100%;
+}
+
+#newdb {
+	float:left;
+	padding:0 10%;
 }
 
 #newdb > button{
@@ -256,8 +262,10 @@ div[class=newdb]{
 	padding: 0px;
 	font-size:22px;
 	font-weight:lighter;
+	letter-spacing:1px;
 	float:left;
-	color: white;
+	margin-left:3px;
+	color: black;
 	background: #4D9C35;
 	text-transform: uppercase;
 	
@@ -269,21 +277,21 @@ div[class=newdb]{
 	
 }
 
-.formtitle {
-	padding-top:3px;
-	margin-top:0px;
-	text-transform:uppercase;
+p[class=formtitle] {
+	margin: 0 auto;
 	text-align: center;
-	padding:0;
-	font-size:14pt;
+	font-size: 18pt;
+	font-weight:lighter;
+	letter-spacing:0.5px;
+	padding: 5px;
+	padding-bottom:15px;
 }
-
 
 /* Stile per tabella informazioni Server MongoDB */
 
 #dbStat {
 	display:none;
-	/*width: 69%;*/
+	
 }
 
 #dbStat table{
@@ -292,18 +300,18 @@ div[class=newdb]{
 }
 
 #serverstat{
-	width:75%;
+	width:65%;
 	margin: 0 auto;
-	border-left: 1px solid black;
-	padding-top: 0px;
-	float:right;
+	border-left: 1px solid white;
+	padding-bottom:20px;
+	padding-top: 10px;
+	float:left;
 }
 
 #serverstat table{
-	width: 90%;
+	width: 80%;
 	margin: 0 auto;
 }
-
 
 table { 
 	text-align: left;
@@ -321,39 +329,27 @@ tr{
 	border-top:1px solid #dddddd;
 }
 
+td[class=border-transparent]{
+	border-color:#87CEFA !important;
+}
+
 .odd{
 	background-color: #f9f9f9;
 }
+.even{
+	background-color: white;
+}
 
 caption {
-	line-height: 44px;
-	color: #60634E;
-	font-weight: bold;
+	color: black;
 	text-align: center;
 	margin: 0;
-	padding: 0;
+	padding: 10px;
 }
 
-tr {
-	vertical-align: top;
-}
-
-tr,th,td {
-	padding: .75em;
-}
-
-#collection{
-	border-left: 1px solid black;
-	float:left;
-	margin: 0 auto;
-	margin-left: 5px;
-	width: 75%;
-	min-height: inherit;
-}
-
-p[class="title"]{
+p[class=titletab]{
 	text-align:center;
-	text-transform:uppercase;
+
 	color:black;
 	font-weight:lighter;
 	font-size:20pt;
@@ -361,71 +357,115 @@ p[class="title"]{
 	letter-spacing:0.5px;
 }
 
-.collform{
+tr {
+	vertical-align: top;
+}
+
+tr,th,td {
+	padding: 5px;
+}
+
+/* Stili per pagina collezioni */
+#collection{
+	padding-top:10px;
+	padding-bottom:10px;
+	border-left: 1px solid white;
+	float:left;
+	margin:0 auto;
+	width: 60%;
+	min-height: 400px;
+}
+
+p[class=title]{
 	margin: 0 auto;
-	width: 100%;
-	float:left;
-	margin-left:10px;
-	border-bottom: 1px solid #dddddd;
-	margin-bottom: 20px;
+	text-align: center;
+	font-size: 20pt;
+	font-weight:lighter;
+	letter-spacing:0.5px;
+	padding: 5px;
+	padding-bottom:30px;
 }
 
-#collform {
-	/*border: 1px solid red;*/
+div[class=nomecollection]{
+	margin-bottom:5px;
+	text-align:center;
+}
+
+a[class=nomecollection]:hover{
+	text-decoration:none;
+}
+
+p[class=nomecollection]{
+	color:#FF8C00;
+	font-family:inherit;
+	font-size:16pt;
+}
+
+div[class=infocollection]{	
+	float:left;
+	width:100%;
+}
+
+table[class=infocollection]{
+	background-color:white;
+	margin: 0 auto;
+	margin-bottom:10px;
+	width:80%;
+	float:left;
+} 
+
+table[class=infocollection] td[class="odd"]{
+	width:300px;
+	/*padding:10px;*/
+}
+
+table[class=infocollection] td{
+	width:100px;
+}
+
+ul[class=infocollection]{
+	width:90%;
+	float:left;
+}
+
+li[class=infocollection]{
+	/*width:100%;*/
+	font-size:12pt;
+	height:40px;
+	display:inline;
+	float:left;
+	padding:0;
+	padding-top:5px;
+	margin-left:0px;
+	margin-right:0px;
+	margin:5px;
+	/*border:1px solid black;*/
+}
+
+p[class=infocollection]{
+	text-align:center;
+	border:1px solid blue;
+}
+
+div[id=collform] {
+	/*background-color:#B0C4DE;*/
+	margin:0 3%;
+	margin-bottom:10px;
 	float:left;
 	min-height: 50px;
-	width: 100%;
+	width:100%;
 	padding: 10px;
 }
-
-#collform > a {
-	padding: 5px;
-	margin-bottom: 5px;
-	float: left;
-	font-size: 20px;
-}
-
-
-#docform {
-	float:left;
-	min-height: 50px;
-	width: auto;
-	padding: 10px;
-	margin-right: 3px;
-	min-width:300px;
-	
-	border: 1px solid #005682;
-	border-radius:10px;
-	
-	background-color: #0073AF;
-	color: #F5AC48;
-}
-
-#docform > a {
-	padding: 5px;
-	margin-bottom: 5px;
-	float: left;
-	font-size: 20px;
-}
-
-
-
 
 /*Stile per elementi FORM di creazione collezioni */
-#newcoll > div{
-	/*border:1px solid #dddddd;*/
+div[class=newcoll]{
+	/*border:1px solid black;*/
 	float:left;
-	width: auto;
-	/*background: #f9f9f9;*/
-	
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius:3px;
-	
-	padding: 0;
+	padding-top:5px;
+	margin:0 30%;
 }
 
-.newcoll{
+input[class~=newcoll]{
 	background: #F4F5F2;
 	color: black;
 	border: 1px solid #dddddd;
@@ -444,18 +484,14 @@ p[class="title"]{
 	line-height: 40px;
 }
 
-.newcoll:focus {
-	outline: none;
-}
-
-#newcoll > div > button{
+button[class=newcoll]{
 	height:50px;
 	width: 90px;
 	padding: 0px;
 	font-size:22px;
 	font-weight:lighter;
 	float:left;
-	color: white;
+	color: black;
 	background: #4D9C35;
 	text-transform: uppercase;
 	
@@ -470,7 +506,7 @@ p[class="title"]{
 	/*box-shadow: -1px -1px 1px #AFCFAA*/
 }
 
-#newcoll > div > p {
+p[class=newcoll] {
 	text-align: center;
 	font-size:22px;
 	font-weight: bold;
@@ -479,44 +515,161 @@ p[class="title"]{
 }
 
 /* Stile per elementi FORM cancellazione collezione */
-
-#deletecoll{
+form[id=deletecoll]{
+	margin:0 auto;
+	margin-top:15px;
+	margin-left:20px;
 	float: left;
+	padding:0px;
 }
 
-#deletecoll > div{
-	width:100%;
-	border: 1px solid red;
-}
+button[class="deletecoll"]{
 
-#deletecoll > button{
-
-	height:25px;
-	width: 55px;
+	height:50px;
+	width: 90px;
 	padding: 0;
-	color: white;
-	font-size:10px;
+	color: black;
+	font-size:16px;
 	text-transform: uppercase;
+	font-weight:lighter;
 	background-color: red;
 	border: 1px solid red;
 	
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px; 
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px; 
 }
 
+/* Stili per elementi FORM creazione documenti*/
+div[class=newdoc]{
+	/*border:1px solid black;*/
+	float:left;
+	padding-top:5px;
+	margin:0 30%;
+}
+
+input[class=newdoc]{
+	background: #F4F5F2;
+	color: black;
+	border: 1px solid #dddddd;
+	width: 200px;
+	height: 50px;
+	font-size:16px;
+	font-weight:lighter;
+	padding-left:5px;
+	float:left;
+	margin-left: 3px;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	
+	line-height: 40px;
+}
+
+button[class=newdoc]{
+	height:50px;
+	width: 90px;
+	padding: 0px;
+	font-size:22px;
+	font-weight:lighter;
+	float:left;
+	color: black;
+	background: #4D9C35;
+	text-transform: uppercase;
+	
+	margin-left:3px;
+	
+	border: 1px solid #4D9C35;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius:10px;
+	
+	/*box-shadow: -1px -1px 1px #AFCFAA*/
+}
+
+p[class=newdoc] {
+	text-align: center;
+	font-size:22px;
+	font-weight: bold;
+	margin: 0;
+	padding-bottom: 3px;
+}
 
 .viewdoc {
 	color:yellow;
 	background-color:blue;
 }
 
+/* Stile per pagina documenti */
+#document{
+	padding:10px;
+	border-left: 1px solid white;
+	float:left;
+	width: 60%;
+	min-height: 400px;
+}
+
+div[class=docform]{
+	float:left;
+	width:80%;
+	padding:5px;
+		min-height:100px;
+	
+	border: 1px solid #005682;
+	border-radius:10px;
+	
+	background-color: #0073AF;
+	color: #F5AC48;
+}
+
+div[class=document]{
+	float:left;
+	width:100%;
+	margin:0 5%;
+	
+	margin-bottom:10px;
+}
+
+.docform > a {
+	padding: 5px;
+	margin-bottom: 5px;
+	float: left;
+	font-size: 20px;
+}
+
+
+form[id=deletedoc]{
+	margin:0 auto;
+	margin-top:15px;
+	margin-left:20px;
+	float: left;
+	padding:0px;
+}
+
+button[class="deletedoc"]{
+
+	height:50px;
+	width: 90px;
+	padding: 0;
+	color: black;
+	font-size:16px;
+	text-transform: uppercase;
+	font-weight:lighter;
+	background-color: red;
+	border: 1px solid red;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px; 
+}
 
 /*Stile per elemento FOOTER del layout*/
 
 footer{
-	margin-top:10px;
-	background-color: #e1523d;
+	margin-top:1px;
+	background-color: #00BFFF;
 	width:100%;
 	float:left;
 	font-size:100%;

@@ -4,73 +4,72 @@
  		<div id="serverstat">
  			<table>
 	 		<caption>
-	 			<h3>Informazioni Server MongoDb</h3>
+	 			<p class="titletab">Informazioni Server MongoDb</p>
 	 		</caption>
  			  <tr>
  			    <td class="odd"><strong>Hostname</strong></td>
- 			    <td id="dbHost">{{ info.host }}</td>
+ 			    <td class="even">{{ info.host }}</td>
  			    <td class="odd"><strong>MongoDB Version</strong></td>
- 			    <td id="dbVersion">{{ info.version }}</td>
+ 			    <td class="even" id="dbVersion">{{ info.version }}</td>
  			  </tr>
  			  <tr>
  			    <td class="odd"><strong>Uptime</strong></td>
- 			    <td>{{ info.uptime }} seconds</td>
+ 			    <td class="even">{{ info.uptime }} seconds</td>
  			    <td class="odd"><strong>Server Time</strong></td>
- 			    <td>{{ info.localTime|date('r') }}</td>
+ 			    <td class="even">{{ info.localTime|date('r') }}</td>
  			  </tr>
- 			  <tr><td colspan="4">&nbsp;</td></tr>
+ 			  <tr class="border-transparent"><td colspan="4">&nbsp;</td></tr>
  			  <tr>
  			    <td class="odd"><strong>Current Connections</strong></td>
- 			    <td>{{ info.connections.current }}</td>
+ 			    <td class="even">{{ info.connections.current }}</td>
  			    <td class="odd"><strong>Available Connections</strong></td>
- 			    <td>{{ info.connections.available }}</td>
+ 			    <td class="even">{{ info.connections.available }}</td>
  			  </tr>
  			  <tr>
  			    <td class="odd"><strong>Active Clients</strong></td>
- 			    <td>{{ info.globalLock.activeClients.total }}</td>
+ 			    <td class="even">{{ info.globalLock.activeClients.total }}</td>
  			    <td class="odd"><strong>Queued Operations</strong></td>
- 			    <td>{{ info.globalLock.currentQueue.total }}</td>
+ 			    <td class="even">{{ info.globalLock.currentQueue.total }}</td>
  			  </tr>
  			  <tr>
  			    <td class="odd"><strong>Clients Reading</strong></td>
- 			    <td>{{ info.globalLock.activeClients.readers }}</td>
+ 			    <td class="even">{{ info.globalLock.activeClients.readers }}</td>
  			    <td class="odd"><strong>Clients Writing</strong></td>
- 			    <td>{{ info.globalLock.activeClients.writers}}</td>
+ 			    <td class="even">{{ info.globalLock.activeClients.writers}}</td>
  			  </tr>
  			  <tr>
  			    <td class="odd"><strong>Read Lock Queue</strong></td>
- 			    <td>{{ info.globalLock.currentQueue.readers }}</td>
+ 			    <td class="even">{{ info.globalLock.currentQueue.readers }}</td>
  			    <td class="odd"><strong>Write Lock Queue</strong></td>
- 			    <td>{{ info.globalLock.currentQueue.writers}}</td>
+ 			    <td class="even">{{ info.globalLock.currentQueue.writers}}</td>
  			  </tr>
- 			  <tr><td colspan="4">&nbsp;</td></tr>
+ 			  <tr class="border-transparent"><td colspan="4">&nbsp;</td></tr>
  			  <tr>
  			    <td class="odd"><strong>Disk Flushes</strong></td>
- 			    <td>{{ info.backgroundFlushing.flushes }}</td>
+ 			    <td class="even">{{ info.backgroundFlushing.flushes }}</td>
  			    <td class="odd"><strong>Last Flush</strong></td>
- 			    <td>{{ info.backgroundFlushing.last_finished|date('r') }}</td>
+ 			    <td class="even">{{ info.backgroundFlushing.last_finished|date('r') }}</td>
  			  </tr>
  			  <tr>
  			    <td class="odd"><strong>Time Spent Flushing</strong></td>
- 			    <td>{{ info.backgroundFlushing.total_ms }} ms</td>
+ 			    <td class="even">{{ info.backgroundFlushing.total_ms }} ms</td>
  			    <td class="odd"><strong>Average Flush Time</strong></td>
- 			    <td>{{ info.backgroundFlushing.average_ms }} ms</td>
+ 			    <td class="even">{{ info.backgroundFlushing.average_ms }} ms</td>
  			  </tr>
- 			  <tr><td colspan="4">&nbsp;</td></tr>
+ 			  <tr ><td class="border-transparent" colspan="4">&nbsp;</td></tr>
  			  <tr>
  			    <td class="odd"><strong>Total Inserts</strong></td>
- 			    <td>{{ info.opcounters.insert }}</td>
+ 			    <td class="even">{{ info.opcounters.insert }}</td>
  			    <td class="odd"><strong>Total Queries</strong></td>
- 			    <td>{{ info.opcounters.query}}</td>
+ 			    <td class="even">{{ info.opcounters.query}}</td>
  			  </tr>
  			  <tr>
  			    <td class="odd"><strong>Total Updates</strong></td>
- 			    <td>{{ info.opcounters.update}}</td>
+ 			    <td class="even">{{ info.opcounters.update}}</td>
  			    <td class="odd"><strong>Total Deletes</strong></td>
- 			    <td>{{ info.opcounters.delete}}</td>
+ 			    <td class="even">{{ info.opcounters.delete}}</td>
  			  </tr>
  			</table>
- 			
  		</div>
  		{% endif %} 
  		

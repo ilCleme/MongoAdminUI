@@ -4,19 +4,27 @@
 
 var json = require('../json');
 var _ = require('underscore');
-var ObjectID = require('mongodb').ObjectID;
-var BSON = require('mongodb').BSONPure;
+//var ObjectID = require('mongodb').ObjectID;
+//var BSON = require('mongodb').BSONPure;
+
+var infoCollection = require('./middleware/infoCollection');
 
 module.exports = function(app) {
 	
 	//Genera elenco di collezioni presenti su database scelto
-	app.get('/db/:database', function(req, res){
+	app.get('/db/:database', infoCollection, function(req, res){
 		console.log('GET /db/'+req.params.database);
 		
+		var statistiche = req.statistiche;
+		
 		var dbName = req.params.database;
+		var db = connessioni[dbName];
+		
+		
  	 	var data = {
     		db: dbName,
-    		database: databases
+    		database: databases,
+			statistiche: statistiche
   			};
   			
   		if (collection[dbName] == null){
@@ -25,9 +33,7 @@ module.exports = function(app) {
   			data.colls = collection[dbName];
   		}
 		
-		
-		
-  		console.log(data);
+  		//console.log(data);
   		res.render('database', data);
 	});
 	
@@ -54,9 +60,11 @@ module.exports = function(app) {
 				console.log(err);
 				
 			} else {
+				
 				collect = collection[dbName];
 				try{
 					collect.push(dbColl);
+					collection[dbName].sort();
 				} catch(err){
 					console.log(err);
 					aggiornaCollezioni(db,dbName);
@@ -70,7 +78,7 @@ module.exports = function(app) {
   				}
 				
   				console.log(data);
-				res.render('database', data);
+				res.redirect('/db/'+req.params.database);
 				
 			}
 		})
@@ -107,7 +115,7 @@ module.exports = function(app) {
   				}
 			}
   			
-			res.render('database',data);
+			res.redirect('/db/'+req.params.database);
 		});
 	});
 };

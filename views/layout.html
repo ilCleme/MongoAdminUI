@@ -14,7 +14,7 @@
 			<h1 class="titolo"><a class="nodecoration" href="/db">MongoAdminUI</a></h1>
 			<p class="sottotitolo">Web Administration Interface for MongoDB</p>
 		</div>
-		<form id="ricerca">
+		<form id="ricerca" style="display:none">
 			<input type="text" id="search" placeholder="Ricerca">
 			<select id="tiporicerca" onfocus="this.blur()">
 			  <option value="database">database</option>
@@ -27,8 +27,8 @@
 	<div id="content">
 	<div id="database">
 		<div class="database">
-		<p class="dbtitle">Database Recuperati</p>
-		<ul class="database">
+			<p class="dbtitle">Database Recuperati</p>
+			<ul class="database">
 			{% for db in database %}
 			<li class="database">
 				<a href="/db/{{db}}">
@@ -41,7 +41,7 @@
 				</form>
 			</li>
 			{% endfor %}
-		</ul>
+			</ul>
 		</div>
 		<div class="newdb">
 		<form id="newdb" action="/db" autocomplete="off" method="post">

@@ -106,6 +106,7 @@ aggiornaCollezioni = function(db,dbName){
 			}
 			names.sort();
 			collection[dbName] = names;
+			
 		});
 };
 
