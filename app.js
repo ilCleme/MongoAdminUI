@@ -26,7 +26,7 @@ app.engine('html', cons.swig);
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'html');
-  app.set('view options', {layout: false});
+  app.set('view options', {layout: true});
   app.use("/public", express.static(__dirname + '/public'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
@@ -83,9 +83,9 @@ recuperoInfo = function(db){
 		for(var data in dbs.databases){
 			var dbName = dbs.databases[data]['name'];
 			
-			/*if(dbName == 'local'){
+			if(dbName == 'local'){
 				continue;
-			}*/
+			}
 			
 			databases.push(dbName);
 			connessioni[dbName] = mainDb.db(dbName);
@@ -95,6 +95,9 @@ recuperoInfo = function(db){
 	}); 
 }    
 
+/*
+*  Recupero informazioni sulle collezioni presenti nei database disponibili
+*/
 aggiornaCollezioni = function(db,dbName){
 		db.collectionNames(function(err, items) {
 			

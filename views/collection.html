@@ -1,5 +1,9 @@
 {% extends 'layout.html' %}
 
+{% block bread %}
+	<a href="/db/{{db}}" class="db-bread">{{db}}</a><p class="db-bread">{{title}}</p>
+{% endblock %}
+
 {% block error %}
 	{% if err %}
 		<div id="error" >
@@ -12,41 +16,75 @@
 {% block documento %}
 	{% if docs and not err %}
 	<div id="document">
+	    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script type="text/javascript" src="/public/javascripts/popupdoc.js"></script>
+		<div class="newdoc">
+			<!--- <form id="newdoc" action="/db/{{db}}/{{title}}/new" autocomplete="off" method="post"> -->
+				<p class="newcoll">Crea Documento</p>
+				<button class="crea newdoc" id="crea" type="submit">crea</button>
+				<!--- </form> -->
+		</div>
+		<div id="dialog-confirm" title="Crea Nuovo Documento">
+			<p>Inserisci un nuovo documento</p>
+			<form id="newdocument" action="/db/{{db}}/{{title}}/new" method="post">
+				<div>
+				<div class="left">
+					<label class="aggiungilabel">Chiave</label>
+					<input type="text" class="aggiungiinput" placeholder="Chiave" name="chiave">
+				</div>
+				<div class="right">
+					<label class="aggiungilabel">Valore</label>
+					<input type="text" class="aggiungiinput" placeholder="Valore" name="valore">
+				</div>
+			</div>
+			</form>
+		</div>
 		<p class="title">Documenti nella collezione {{title}}</p>
 			{% for dati in docs %}
 					<div class="document"> 
 						<div class="docform">
 							{% for i in dati %}
-								{{ loop.key }} : {{i}} <br>
+								<p class="docform">{{ loop.key }} : {{i}}</p> <br>
 							{% endfor %}
 						</div>
-						<form id="deletedoc" action="/db/{{db}}/{{collect}}" method="post">
+						<form id="deletedoc" action="/db/{{db}}/{{title}}" method="post">
 							<input type="hidden" name="_method" value="delete">
 							<input type="hidden" name="docId" value="{{dati._id}}">
-							<button type="submit" class="deletedoc" value="Cancella">cancella</button>
+							<button type="submit" class="cancella" value="Cancella">cancella</button>
 						</form>
 					</div>
 			{% endfor %}
-		<div class="newdoc" >
-			<form id="newdoc" action="/db/{{db}}/{{collect}}/new" autocomplete="off" method="post">
-				<p class="newdoc">Crea Documento</p>
-				<input required="required" class="newdoc" type="text" name="docName" placeholder="Nome Documento">
-				<button class="newcoll" type="submit">crea</button>
-			</form>
-		</div>
-		
 	</div>
+	
 	{% endif %}
 	
 	{% if docs and err %}
+   	 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script type="text/javascript" src="/public/javascripts/popupdoc.js"></script>
 		<div id="document">
 			<div class="newdoc">
-				<form id="newdoc" action="/db/{{db}}/{{coll}}/new" autocomplete="off" method="post">
-					<p class="newdoc">Crea Documento</p>
-					<input required="required" class="newdoc" type="text" name="docName" placeholder="Nome Documento">
-					<button class="newdoc" type="submit">crea</button>
+				<form id="newdoc" action="/db/{{db}}/{{title}}/new" autocomplete="off" method="post">
+					<p class="newcoll">Crea Documento</p>
+					<button class="crea newdoc" id="crea" type="submit">crea</button>
 				</form>
 			</div>
+		</div>
+		<div id="dialog-confirm" title="Crea Nuovo Documento">
+			<p>Inserisci un nuovo documento</p>
+			<form id="newdocument" action="/db/{{db}}/{{title}}/new" method="post">
+				<div>
+				<div class="left">
+					<label class="aggiungilabel">Chiave</label>
+					<input type="text" class="aggiungiinput" placeholder="Chiave" name="chiave">
+				</div>
+				<div class="right">
+					<label class="aggiungilabel">Valore</label>
+					<input type="text" class="aggiungiinput" placeholder="Valore" name="valore">
+				</div>
+			</div>
+			</form>
 		</div>
 	{% endif %}
 {% endblock %}

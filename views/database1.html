@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block collezione %}
+	{% if colls %}
+	<div id="collection">
+		<p class="title">Collezioni nel Database {{db}}</p>
+		<ul class="collform">
+			{% for info in statistiche %}
+				<li>
+					<div id="collform">
+						<div class="nomecollection">
+							<a href="/db/{{db}}/{{coll}}">
+								<p class="nomecollection">{{ colls[loop.key]|upper }}</p>
+							</a>
+						</div>
+						<div class="infocollection">
+					 		<table class="infocollection">
+					 			<tr>
+					 				<td class="odd"><strong>Namespace</strong></td>
+					 			    <td id="dbHost">{{ info.ns }}</td>
+					 			    <td class="odd"><strong>Number of Document</strong></td>
+					 			    <td id="dbVersion">{{ info.count }}</td>
+					 			</tr>
+					 			<tr>
+					 			  	<td class="odd"><strong>Size of Collection</strong></td>
+					 			    <td>{{ info.size }} bytes</td>
+					 			    <td class="odd"><strong>Average Size of Document</strong></td>
+					 			    <td>{{ info.avgObjSize }} bytes</td>
+					 			</tr>
+					 			<tr>
+					 			    <td class="odd"><strong>Allocated Space for Collection</strong></td>
+					 			    <td>{{ info.storageSize }}</td>
+					 			    <td class="odd"><strong>Capped</strong></td>
+					 			    <td>{{ info.isCapped }}</td>
+					 			</tr>
+					 		</table>
+						
+							<form id="deletecoll" action="/db/{{db}}" method="post">
+								<input type="hidden" name="_method" value="delete">
+								<input type="hidden" name="collName" value="{{colls[loop.key]}}">
+								<button type="submit" value="Cancella">cancella</button>
+							</form>
+						</div>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+		<form id="newcoll" action="/db/{{db}}" autocomplete="off" method="post" name="form" >
+			<div>
+				<p>Crea Collezione</p>
+			 	<input required="required" class="newcoll" type="text" name="collName" placeholder="Nome Collezione">
+			  	<button type="submit">crea</button>
+		  	</div>
+		</form>
+	</div>
+	{% endif %}
+	{% if not colls %}
+		<div id="collection">
+			<form id="newcoll" action="/db/{{db}}" autocomplete="off" method="post">
+				<div>
+					<p>Crea Collezione</p>
+				 	<input required="required" class="newcoll" type="text" name="collName" placeholder="Nome Collezione">
+				  	<button type="submit">crea</button>
+			  	</div>
+			</form>
+		</div>
+	{% endif %}
+{% endblock%}
+
+{% block error %}
+	{% if err %}
+		<div id="error">
+			<p class="error">{{err}}</p>
+		</div>
+	{% endif %}
+{% endblock %}

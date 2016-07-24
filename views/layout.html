@@ -5,6 +5,10 @@
   <title>MongoAdminUI</title>
   <link href="/public/stylesheets/style.css" rel="stylesheet" media="all"/>
   <link href="/public/stylesheets/bootstrap.css" rel="stylesheet" media="all"/>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <link href="/public/stylesheets/popup.css" rel="stylesheet" media="all"/>
+  <script type="text/javascript" src="/public/javascripts/jquery.min.js"></script>
+  <script type="text/javascript" src="/public/javascripts/breadcrumbs.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% block head %}{% endblock %}
 </head>
@@ -51,7 +55,7 @@
 			
 				<p class="formtitle">Crea Nuovo Database</p>
 			 	<input class="newcoll" type="text" name="newDb" placeholder="Nome Database">
-			  	<button type="submit">crea</button>
+			  	<button class="crea" type="submit">crea</button>
 				{% if error %}
 				<p class="error">{{error}}</p>
 				{% endif %}

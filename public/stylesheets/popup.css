@@ -1,0 +1,147 @@
+.menu > div[class~=ui-dialog-titlebar]{
+	background:#00BFFF !important;
+	border:1px solid #00BFFF !important;
+}
+.menu > div > span{
+	color:white;
+}
+
+span[id="ui-id-1"]{
+	text-align:center;
+	float:left;
+	font-size:150%;
+	font-weight:lighter;
+}
+
+.menu > div[class~=ui-dialog-title]{
+	float:left;
+	text-align:center;
+}
+
+/* Contenuto di dialog-confirm */
+div#dialog-confirm{
+	margin-top:10px;
+	border:1px solid #dddddd;
+}
+
+div#dialog-confirm > p{
+	font-size:120%;
+	color:black;
+	font-weight:lighter;
+	text-align:center;
+	letter-spacing:1px;
+}
+
+div.ui-dialog-buttonpane{
+	border:transparent;
+}
+
+button.cancelladocumento{
+	float:left;
+	line-height: 32px;
+    text-transform: uppercase;	
+    outline: none;
+    cursor: pointer !important;
+    border-radius: 5px;
+    color: #410012 !important;
+    text-shadow: 1px 1px #FF6347;
+    border: 1px solid #A61022 !important;
+    border-top: 1px solid #FF0000;
+    border-bottom: 1px solid #A61022;
+	
+    background: -moz-linear-gradient(top,  #FF0000 0%, #C80815 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FF0000), color-stop(100%,#C80815)) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #FF0000 0%,#C80815 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #FF0000 0%,#C80815 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #FF0000 0%,#C80815 100%) !important; /* IE10+ */
+    background: linear-gradient(top,  #FF0000 0%,#C80815 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='##FF0000', endColorstr='##C80815',GradientType=0 ) !important; /* IE6-9 */
+
+}
+
+button.creadocumento{
+	    line-height: 32px;
+	    text-transform: uppercase;	
+	    float:left;
+	    outline: none;
+	    cursor: pointer !important;
+	    border-radius: 5px;
+	    color: #5D7731 !important;
+	    text-shadow: 1px 1px #D0E5A4;
+	    border: 1px solid #89A94D !important;
+	    border-top: 1px solid #AAD063;
+	    border-bottom: 1px solid #6D883B;
+	 
+	    background: -moz-linear-gradient(top,  #cae285 0%, #a3cd5a 100%) !important; /* FF3.6+ */
+	    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cae285), color-stop(100%,#a3cd5a)) !important; /* Chrome,Safari4+ */
+	    background: -webkit-linear-gradient(top,  #cae285 0%,#a3cd5a 100%) !important; /* Chrome10+,Safari5.1+ */
+	    background: -o-linear-gradient(top,  #cae285 0%,#a3cd5a 100%) !important; /* Opera 11.10+ */
+	    background: -ms-linear-gradient(top,  #cae285 0%,#a3cd5a 100%) !important; /* IE10+ */
+	    background: linear-gradient(top,  #cae285 0%,#a3cd5a 100%) !important; /* W3C */
+	    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cae285', endColorstr='#a3cd5a',GradientType=0 ) !important; /* IE6-9 */
+	    background-color: #B6D76F !important;
+}
+
+button.aggiungi{
+    line-height: 32px;
+    text-transform: uppercase;	
+    float:left;
+    outline: none;
+    cursor: pointer !important;
+    border-radius: 5px;
+    color: #4682B4 !important;
+    text-shadow: 1px 1px #007FFF;
+    border: 1px solid #0095B6 !important;
+    
+ 
+    background: -moz-linear-gradient(top,  #ABCDEF 0%, #6397D0 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ABCDEF), color-stop(100%,#6397D0)) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ABCDEF 0%,#6397D0 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ABCDEF 0%,#6397D0 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ABCDEF 0%,#6397D0 100%) !important; /* IE10+ */
+    background: linear-gradient(top,  #ABCDEF 0%,#6397D0 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ABCDEF', endColorstr='#6397D0',GradientType=0 ) !important; /* IE6-9 */
+    background-color: #ABCDEF !important;
+}
+
+input.aggiungiinput{
+	display:inline;
+	background: white;
+	color: black;
+	border: 1px solid #dddddd;
+	width: 95%;
+	height: 30px;
+	font-size:12px;
+	font-weight:lighter;
+	padding-left:5px;
+	/*float:left;*/
+	margin-right:5px;
+	
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	
+	/*line-height: 32px;*/
+}
+
+label.aggiungilabel{
+	font-size:16px;
+	/*font-weight: lighter;*/
+	margin: 0;
+	padding-bottom: 5px;
+}
+
+div.left{
+	text-align:center;
+	width:50%;
+	float:left;
+	/*border-bottom:1px solid #dddddd;*/
+}
+
+div.right{
+	text-align:center;
+	width:50%;
+	float:right;
+	/*border-bottom:1px solid #dddddd;*/
+}
+

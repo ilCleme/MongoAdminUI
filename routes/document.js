@@ -9,7 +9,9 @@ var ObjectID = require('mongodb').ObjectID;
 var BSON = require('mongodb').BSONPure;
 
 module.exports = function(app) {
-
+	/*
+	* Gestisce le richieste per la visualizzazione delle collezioni in un determinato database
+	*/
 	app.get('/db/:database/:collection', function(req,res){
 		console.log('GET /db/'+req.params.database+'/'+req.params.collection);
 		
@@ -18,14 +20,11 @@ module.exports = function(app) {
 		var collection = [];
 		var data = {};
 		
-		
 		connessioni[dbName].collection(collName, function(err, coll) {
     		if (err) {
       			console.log('C\'è stato un errore: '+err);
     		} 
-    		
     		collection = coll;
-
   		});
   	
   		var query_options = {};
@@ -65,35 +64,34 @@ module.exports = function(app) {
 	
 	});
 	
-	
 	/*
 	* Gestisce l'inserimento di un nuovo documento nel database
 	*/
 	app.post('/db/:database/:collection/new', function(req, res){
 		console.log('POST /db/'+req.params.database+'/'+req.params.collection+'/new');
 		
-		
 		var dbName = req.params.database;
 		var collName = req.params.collection;
-		var doc = req.body.docName;
-		doc = {document: doc};
-		var document = JSON.stringify(doc);
-		var oid = new BSON.ObjectID();
+		var chiavi = req.body.chiave;
+	
+		var valori = req.body.valore;
+	
+		if(!(_.isArray(chiavi) && _.isArray(valori))){
+			console.log(chiavi.length);	
+			console.log(chiavi);
+			var doc = {chiavi : valori}
+			console.log(_.isObject(doc));
+		} else {
+			var doc = _.object(chiavi, valori);
+		}
+		
 		var noInsert;
 		var db = connessioni[dbName];
-		
-		doc._id = oid;
-		
-		/*db.collection(collName, function(err, col){
-			col.stat(function(err, stat){
-				console.log(stat);
-			});
-		});*/
 		
 		db.collection(collName).insert(doc, function(err, result) {
   			if(err){
   				console.error(err);
-  				noInsert = "Impossibile inserire il documento \"" + docName +"\"" ;
+  				noInsert = "Impossibile inserire il documento \"" + doc.toString() +"\"" ;
   				var data = {err : noInsert};
   				res.render('collection', data);
   			} else {
@@ -101,23 +99,6 @@ module.exports = function(app) {
   				res.redirect(URL);
   			}
   		});
-  		
-  		/*db.collection(collName).find().toArray(function(err,items){
-  			db.collection(collName).stats(function(err, stats) {
-
-      			var docs = [];
-
-      			for(var i in items) {
-        			docs[i] = items[i];
-        			items[i] = json.stringify(items[i], null, '\n');
-      			}
-
-        		var URL = '/db/'+dbName+'/'+collName;
-
-      			res.redirect(URL);
-      		
-    		});
-  		});*/
 		
 	});
 	

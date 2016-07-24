@@ -61,9 +61,9 @@ module.exports = function(app) {
 				
 			} else {
 				
-				collect = collection[dbName];
+				//collect = collection[dbName];
 				try{
-					collect.push(dbColl);
+					collection[dbName].push(dbColl);
 					collection[dbName].sort();
 				} catch(err){
 					console.log(err);

@@ -1,0 +1,161 @@
+{
+	"author": {
+    	"name": "Clementi Mattia",
+    	"email": "ilcleme@gmail.com",
+	},
+  	
+    "name": "MongoAdminUI", 
+    "version": "0.0.1", 
+    "private": true, 
+    "dependencies": {
+      	"express": "3.x.x",
+      	"jade": ">= 0.0.1",
+      	"mongodb": "*",
+      	"consolidate": "*",
+      	"swig": "*",
+      	"underscore": "1.5.2",
+      	"async": "*",
+		"connect-redis": "*",
+  	}
+}
+
+							{% for i in info %}
+								{% if loop.key == 'indexSizes' %}
+									<li class="infocollection">
+										<p class="infocollection">{{loop.key}}
+									{% for x in i %}
+									
+										{{ loop.key }}:{{x}}
+										
+									{% endfor %}
+										</p>
+									</li>
+								{% else %}
+								<li class="infocollection"><p class="infocollection">{{ loop.key }}:{{i}}</p></li>
+								{% endif %}
+							{% endfor %}
+
+var middleware = function(req, res, next) {
+  req.mainDb = mainDb;
+  req.statMainDb = statMainDb;
+  //req.adminDb = adminDb;
+  req.databases = databases; //List of database names
+  req.collections = collection; //List of collection names in all databases
+
+  //Allow page handlers to request an update for collection list
+  req.aggiornaCollezioni = aggiornaCollezioni;
+
+  next();
+};
+
+/*db1.open(function(err, db) {
+  assert.equal(null, err);
+
+  // Create a capped collection with a maximum of 1000 documents
+  db1.createCollection("prova", {capped:true, size:10000, max:1000, w:1}, function(err, collection) {
+    assert.equal(null, err);
+
+    // Insert a document in the capped collection
+    collection.insert({a:3}, {w:3}, function(err, result) {
+      if
+
+      db1.close();
+    });
+  });
+});*/
+
+/*var vettore = [];
+var collection = [];
+var database = [];
+
+mongoClient.connect("mongodb://localhost:27017/mydb",function(err, db) {
+  assert.equal(null, err);
+  
+  <!-- {% if not docs %}
+  	{% block documento %}
+  		<div id="nodocs">
+  			<form action="/db/{{db}}/{{coll}}/new" autocomplete="off" method="post">
+  		 		Collection name:<input type="text" name="docName"><br>
+  		  		<input type="submit" value="Crea">
+  			</form>
+  		</div>
+  	{% endblock %}
+  {% endif %}-->
+  
+  db.collectionNames(function(err, items) {
+        assert.ok(items.length > 0);
+		for(var i = 0; i < items.length; i++){
+			collection.push(items[i].name);
+			console.log("name: "+collection[i]);
+		}
+      });
+
+	var adminDb = db.admin();
+	adminDb.listDatabases(function(err, dbs){
+		console.log("Database:");
+		for(var data in dbs){
+			database.push(data);
+			console.log(dbs[data]);
+		}
+		db.close();
+	});     
+
+});
+*/
+
+db.stats(function(err,stat){
+		statMainDb = stat;
+		console.log("Informazioni database:");
+		console.log(statMainDb);
+		console.log("stat.db: "+stat.db);
+		console.log("statMainDb: "+statMainDb.db);
+  		console.log("\n");
+  	});
+  	
+  	
+
+//:collection param MUST be preceded by a :database param
+app.param('collection', function(req, res, next, id) {
+  /*//Make sure collection exists
+  if (!_.include(collections[req.dbName], id)) {
+    req.session.error = "Collection not found!";
+    return res.redirect('/db/' + req.dbName);
+  }*/
+
+  req.collectionName = id;
+  res.locals.collectionName = id;
+  console.log(req.dbName);
+  
+  connessioni[req.dbName].collection(id, function(err, coll) {
+    if (err || coll == null) {
+      return res.redirect('/db/'+req.dbName);
+    }
+
+    req.collection = coll;
+
+    next();
+  });
+});
+
+//:document param MUST be preceded by a :collection param
+app.param('document', function(req, res, next, id) {
+  /*if (id.length == 24) {
+    //Convert id string to mongodb object ID
+    try {
+      id = new mongodb.ObjectID.createFromHexString(id);
+    } catch (err) {
+    }
+  }*/
+
+  req.collection.findOne({_id: id}, function(err, doc) {
+    /*if (err || doc == null) {
+      req.session.error = "Document not found!";
+      return res.redirect('/db/' + req.dbName + '/' + req.collectionName);
+    }*/
+
+    req.document = doc;
+    res.locals.document = doc;
+
+    next();
+  });
+});
